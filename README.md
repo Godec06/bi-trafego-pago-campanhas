@@ -187,16 +187,16 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
    ```textCOUNT(DISTINCT negocio_id) filtrado por origem.```
   Tempo para negócios perdidos – dias
 
-   ```textAVG(DATEDIFF('day', data_inicio, data_fechamento))
+  ```textAVG(DATEDIFF('day', data_inicio, data_fechamento))
   com stage_semantic = 'F'.
 ```
   Quantidade de perdidos
 
-  ```textCOUNT(DISTINCT negocio_id) com stage_semantic = 'F'. ```
-  
+   ```textCOUNT(DISTINCT negocio_id) com stage_semantic = 'F'.```
+   
   Faturamento por dia
 
-   ```textSUM(valor_negocio) por data_fechamento ```
+  ```textSUM(valor_negocio) por data_fechamento```
    
   considerando apenas negócios ganhos.
 
