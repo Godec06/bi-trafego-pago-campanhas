@@ -192,7 +192,7 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
 ```
   Quantidade de perdidos
 
-  ```text COUNT(DISTINCT negocio_id) com stage_semantic = 'F'. ```
+  ```textCOUNT(DISTINCT negocio_id) com stage_semantic = 'F'. ```
   
   Faturamento por dia
 
@@ -202,7 +202,7 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
 
   Entradas diárias
 
-   ```text COUNT(DISTINCT negocio_id) por data_inicio. ```
+  ```textCOUNT(DISTINCT negocio_id) por data_inicio. ```
 
  4.3. Visualizações
 
