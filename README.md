@@ -111,9 +111,10 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
   Ganhos
   Negócios com status de ganho no período.
 
-  ```text COUNT(DISTINCT negocio_id)
-  WHERE stage_semantic = 'S' ou stage_name = 'Negócio ganho' (dependendo da configuração do Bitrix).
+  ```textCOUNT(DISTINCT negocio_id)
+    WHERE stage_name = 'Negócio ganho'
 ```
+
   Não ganho
   Negócios classificados como perdidos.
 
@@ -126,9 +127,9 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
 
   Ticket médio por colaborador (aba “Geral”)
 
-   ```textSUM(valor_negocio) / COUNT(DISTINCT negocio_id_ganho)
+   ```textSUM(valor_negocio) / COUNT(DISTINCT negocio_id_ganho)```
   agrupado por responsavel_nome.
-```
+
  3.3. Visualizações
 
   Cards superiores
