@@ -250,6 +250,7 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
 
  Segmentar resultados por dispositivo, criativo ou grupo de anúncios (via UTMs).
 
-Autor:
+Autor: 
 Projeto desenvolvido por Pedro Rodrigues Godec
+
 Estudante de Ciência de Dados e IA e estagiário na área de implantação de CRM/automação.
