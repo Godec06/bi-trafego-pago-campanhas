@@ -47,43 +47,29 @@ O modelo traz três blocos principais de informação:
 
   Alguns campos utilizados:
 
-  ```textid``` – identificador do negócio
-  
-  ```textdate_create, date_modify``` – datas de criação e modificação
-  
-  ```textbegindate, closedate``` – data de entrada no funil e data de fechamento
-  
-  ```textassigned_by_id, assigned_by_name, assigned_by_department``` – responsável e equipe
-  
-  ```text company_id, company_name, contact_id, contact_name```– empresa e contato
-  
-  ```text category_id, category_name``` – funil / pipeline
-  
-  ```text stage_id, stage_name, stage_semantic_id, stage_semantic ```– etapa do funil e semântica (aberto/ganho/perdido)
-  
-  ```textopportunity, opportunity_account``` – valor do negócio e moeda
-  
-  ```textsource_id, source_name, source_description``` – origem do lead
-  
-  ```textutm_source, utm_medium, utm_campaign, utm_content, utm_term``` – parâmetros de marketing
+  id – identificador do negócio
+  date_create, date_modify – datas de criação e modificação
+  begindate, closedate – data de entrada no funil e data de fechamento
+  assigned_by_id, assigned_by_name, assigned_by_department – responsável e equipe
+  company_id, company_name, contact_id, contact_name – empresa e contato
+  category_id, category_name – funil / pipeline
+  stage_id, stage_name, stage_semantic_id, stage_semantic – etapa do funil e semântica (aberto/ganho/perdido)
+  opportunity, opportunity_account, – valor do negócio e moeda
+  source_id, source_name, source_description – origem do lead
+  utm_source, utm_medium, utm_campaign, utm_content, utm_term – parâmetros de marketing
 
  2.2. Dados de produto (crm_deal_product_row)
 
-   ```textproduct_id, product_name```
-
-   ```textprice``` (preço unitário)
-
-   ```textquantity``` (quantidade)
-
-   ```textprice_brutto``` (preço total)
-
-   ```textmeasure_name``` (unidade de medida)
+  product_id, product_name
+  price (preço unitário)
+  quantity (quantidade)
+  price_brutto (preço total)
+  measure_name (unidade de medida)
 
  2.3. Campos personalizados (crm_deal_uf)
 
-   ```textUF_CRM_1711127061``` – campanhas_trafego-pago (para idenitificarmos de qual campanhas veio o lead)
-
-   ```textUF_CRM_1712601645``` como total_dias_funil – total de dias que o negócio permaneceu no funil
+  UF_CRM_1711127061 – campanhas_trafego-pago (para idenitificarmos de qual campanhas veio o lead)
+  UF_CRM_1712601645 como total_dias_funil – total de dias que o negócio permaneceu no funil
 
 Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o dashboard de performance de campanhas / tráfego pago, garantindo que todos os relatórios conversem entre si.
 
@@ -111,23 +97,22 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
   Ganhos
   Negócios com status de ganho no período.
 
-  ```textCOUNT(DISTINCT negocio_id)
-    WHERE stage_name = 'Negócio ganho'
-```
+  COUNT(DISTINCT negocio_id)
+  WHERE stage_semantic = 'S' ou stage_name = 'Negócio ganho' (dependendo da configuração do Bitrix).
 
   Não ganho
   Negócios classificados como perdidos.
 
-   ```textCOUNT(DISTINCT negocio_id)
+  COUNT(DISTINCT negocio_id)
   WHERE stage_semantic = 'F' (perdido).
-```
+
   Conversão (%)
 
   ganhos / total_de_leads * 100
 
   Ticket médio por colaborador (aba “Geral”)
 
-   ```textSUM(valor_negocio) / COUNT(DISTINCT negocio_id_ganho)```
+  SUM(valor_negocio) / COUNT(DISTINCT negocio_id_ganho)
   agrupado por responsavel_nome.
 
  3.3. Visualizações
@@ -174,35 +159,35 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
 
   Quantidade de ganhos (TRÁFEGO PAGO / CAMPANHAS)
 
-   ```text COUNT(DISTINCT negocio_id)
+  COUNT(DISTINCT negocio_id)
   com filtro de origem (UTM ou source_name) e stage_semantic = 'S'.
-```
+
   Tempo para negócio ganho – dias
 
-  ```textAVG(DATEDIFF('day', data_inicio, data_fechamento))
+  AVG(DATEDIFF('day', data_inicio, data_fechamento))
   ou AVG(total_dias_funil) dependendo da implementação do cliente.
-```
+
   Total de leads
 
-   ```textCOUNT(DISTINCT negocio_id) filtrado por origem.```
+  COUNT(DISTINCT negocio_id) filtrado por origem.
+
   Tempo para negócios perdidos – dias
 
-  ```textAVG(DATEDIFF('day', data_inicio, data_fechamento))
+  AVG(DATEDIFF('day', data_inicio, data_fechamento))
   com stage_semantic = 'F'.
-```
+
   Quantidade de perdidos
 
-   ```textCOUNT(DISTINCT negocio_id) com stage_semantic = 'F'.```
-   
+  COUNT(DISTINCT negocio_id) com stage_semantic = 'F'.
+
   Faturamento por dia
 
-  ```textSUM(valor_negocio) por data_fechamento```
-   
+  SUM(valor_negocio) por data_fechamento
   considerando apenas negócios ganhos.
 
   Entradas diárias
 
-  ```textCOUNT(DISTINCT negocio_id) por data_inicio. ```
+  COUNT(DISTINCT negocio_id) por data_inicio.
 
  4.3. Visualizações
 
@@ -230,14 +215,14 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
 
  A documentação detalhada de cada métrica (filtros, fórmulas, semântica de etapas etc.) está sendo estruturada na pasta:
 
-```text docs/ ```
+ docs/
 
 
  Arquivos sugeridos:
 
- ```textdocs/kpis_trafego_pago.md```
+ docs/kpis_trafego_pago.md
 
- ```textdocs/kpis_campanhas.md```
+ docs/kpis_campanhas.md
 
  Neles são descritos:
 
@@ -265,7 +250,6 @@ Esse modelo único alimenta tanto o dashboard de acompanhamento diário quanto o
 
  Segmentar resultados por dispositivo, criativo ou grupo de anúncios (via UTMs).
 
-Autor: 
+Autor:
 Projeto desenvolvido por Pedro Rodrigues Godec
-
 Estudante de Ciência de Dados e IA e estagiário na área de implantação de CRM/automação.
