@@ -47,16 +47,16 @@ O modelo traz três blocos principais de informação:
 
   Alguns campos utilizados:
 
-  id – identificador do negócio
-  date_create, date_modify – datas de criação e modificação
-  begindate, closedate – data de entrada no funil e data de fechamento
-  assigned_by_id, assigned_by_name, assigned_by_department – responsável e equipe
-  company_id, company_name, contact_id, contact_name – empresa e contato
-  category_id, category_name – funil / pipeline
-  stage_id, stage_name, stage_semantic_id, stage_semantic – etapa do funil e semântica (aberto/ganho/perdido)
-  opportunity, opportunity_account, – valor do negócio e moeda
-  source_id, source_name, source_description – origem do lead
-  utm_source, utm_medium, utm_campaign, utm_content, utm_term – parâmetros de marketing
+  ```textid``` – identificador do negócio
+  ```textdate_create, date_modify``` – datas de criação e modificação
+  ```textbegindate, closedate``` – data de entrada no funil e data de fechamento
+  ```textassigned_by_id, assigned_by_name, assigned_by_department``` – responsável e equipe
+  ```text company_id, company_name, contact_id, contact_name```– empresa e contato
+  ```text category_id, category_name``` – funil / pipeline
+  ```text stage_id, stage_name, stage_semantic_id, stage_semantic ```– etapa do funil e semântica (aberto/ganho/perdido)
+  ```textopportunity, opportunity_account``` – valor do negócio e moeda
+  ```textsource_id, source_name, source_description``` – origem do lead
+  ```textutm_source, utm_medium, utm_campaign, utm_content, utm_term``` – parâmetros de marketing
 
  2.2. Dados de produto (crm_deal_product_row)
 
